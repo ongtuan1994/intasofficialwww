@@ -1,0 +1,11 @@
+# Derived / extracted artifacts from the original bundle (not source)
+_extracted/
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+
+# Node (in case tooling is added later)
+node_modules/
