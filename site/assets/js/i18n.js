@@ -127,7 +127,9 @@ const I18N = {
     "contact.f.message": "Message",
     "contact.f.submit": "Send message",
     "contact.f.note": "By sending this you agree to be contacted about your enquiry. We never share your details.",
-    "contact.f.success": "Thanks! Your message is ready to send — your email app will open. We’ll reply soon.",
+    "contact.f.success": "Thanks! We’ve received your message and will get back to you soon.",
+    "contact.f.error": "Sorry, something went wrong. Please try again, or email us directly at info@tasolve.com.",
+    "contact.f.sending": "Sending…",
     "contact.info.title": "Prefer to reach us directly?",
     "contact.info.text": "We’re a friendly bunch and happy to chat. Reach us any of these ways:",
     "contact.info.email": "Email",
@@ -257,7 +259,9 @@ const I18N = {
     "contact.f.message": "ข้อความ",
     "contact.f.submit": "ส่งข้อความ",
     "contact.f.note": "การส่งข้อความนี้ถือว่าคุณยินยอมให้เราติดต่อกลับเกี่ยวกับเรื่องที่สอบถาม เราจะไม่เปิดเผยข้อมูลของคุณ",
-    "contact.f.success": "ขอบคุณครับ! ข้อความของคุณพร้อมส่งแล้ว — แอปอีเมลจะเปิดขึ้น เราจะรีบตอบกลับ",
+    "contact.f.success": "ขอบคุณครับ! เราได้รับข้อความของคุณแล้ว และจะรีบติดต่อกลับโดยเร็ว",
+    "contact.f.error": "ขออภัย เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง หรืออีเมลหาเราโดยตรงที่ info@tasolve.com",
+    "contact.f.sending": "กำลังส่ง…",
     "contact.info.title": "อยากติดต่อเราโดยตรง?",
     "contact.info.text": "เราเป็นกันเองและยินดีพูดคุยเสมอ ติดต่อได้ตามช่องทางเหล่านี้:",
     "contact.info.email": "อีเมล",
@@ -304,6 +308,7 @@ const I18N = {
   window.INTAS = window.INTAS || {};
   window.INTAS.setLang = setLang;
   window.INTAS.getLang = current;
+  window.INTAS.t = function (key) { return dict(current())[key] || key; };
 
   document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".lang [data-lang]").forEach(function (btn) {

@@ -263,6 +263,11 @@ section { width: 100%; }
   border-radius: 12px; padding: 14px 16px; font-weight: 600; font-size: 15px; margin-bottom: 18px;
 }
 .form-success.show { display: block; }
+.form-error {
+  display: none; background: #FCEBEA; border: 1px solid #F3C9C6; color: #B4302A;
+  border-radius: 12px; padding: 14px 16px; font-weight: 600; font-size: 15px; margin-bottom: 18px;
+}
+.form-error.show { display: block; }
 
 /* ---------- value / step rows ---------- */
 .value-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
