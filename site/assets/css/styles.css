@@ -61,7 +61,8 @@ html[lang="th"] .lead, html[lang="th"] p { line-height: 1.8; }
 html[lang="th"] .badge, html[lang="th"] .eyebrow,
 html[lang="th"] .trust .label, html[lang="th"] .footer-col .head,
 html[lang="th"] .contact-item .k,
-html[lang="th"] .capabilities { letter-spacing: 0.01em; }
+html[lang="th"] .capabilities,
+html[lang="th"] .card-label { letter-spacing: 0.01em; }
 
 a { color: var(--green); text-decoration: none; transition: color .15s; }
 a:hover { color: var(--green-dk); }
@@ -252,7 +253,9 @@ section { width: 100%; }
 .float-card .t2 { font-size: 13px; color: #7A7A76; }
 
 /* ---------- home statement hero ---------- */
-.hero-statement { padding: 96px 32px 88px; }
+.hero-statement { position: relative; overflow: hidden; text-align: center; padding: 104px 32px 92px; }
+/* everything except the backdrop sits above it */
+.hero-statement > *:not(.hero-lattice) { position: relative; z-index: 1; }
 .statement {
   display: flex; flex-direction: column;
   font-size: clamp(42px, 7.2vw, 92px);
@@ -261,7 +264,9 @@ section { width: 100%; }
 }
 .statement .line-1 { color: var(--ink); }
 /* solid green first, so browsers without background-clip still read it */
-.statement .line-2 { color: var(--green); background-image: linear-gradient(96deg, #2E9E5B, #3ECF7E); }
+/* gradient stays above the 3:1 large-text floor at BOTH ends, including
+   where it crosses the densest part of the lattice (worst case 3.82:1) */
+.statement .line-2 { color: #24824A; background-image: linear-gradient(96deg, #186036, #24824A); }
 @supports ((-webkit-background-clip: text) or (background-clip: text)) {
   .statement .line-2 {
     -webkit-background-clip: text; background-clip: text;
@@ -270,16 +275,32 @@ section { width: 100%; }
 }
 .statement-lead {
   font-size: 20px; line-height: 1.6; color: var(--muted-2);
-  max-width: 60ch; margin: 0 0 38px;
+  max-width: 60ch; margin: 0 auto 38px;
 }
 .capabilities {
   list-style: none; margin: 46px 0 0; padding: 0;
-  display: flex; flex-wrap: wrap; align-items: center;
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
   font-size: 13px; font-weight: 700; letter-spacing: 0.08em;
   text-transform: uppercase; color: var(--faint);
 }
 .capabilities li { padding: 4px 20px; border-left: 1px solid var(--line-2); }
 .capabilities li:first-child { padding-left: 0; border-left: none; }
+
+/* rising node lattice behind the headline: nodes climb as they thin out */
+.hero-lattice {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  z-index: 0; pointer-events: none; opacity: .3;
+  /* fade out toward the top so the mark never crowds the headline */
+  -webkit-mask-image: linear-gradient(to top, #000 10%, rgba(0,0,0,.72) 62%, transparent 99%);
+          mask-image: linear-gradient(to top, #000 10%, rgba(0,0,0,.72) 62%, transparent 99%);
+  animation: lattice-in 1.2s ease .15s both;
+}
+.lattice-links line { stroke: var(--green); stroke-width: 1.1; opacity: .38; }
+.lattice-nodes circle { fill: var(--green); opacity: .45; }
+
+@keyframes lattice-in { from { opacity: 0; } to { opacity: .3; } }
+@keyframes node-pulse { 0%, 100% { opacity: .3; } 50% { opacity: .9; } }
+.lattice-nodes .pulse { animation: node-pulse 6s ease-in-out infinite; }
 
 /* one orchestrated entrance, not scattered effects */
 @keyframes statement-rise {
@@ -297,14 +318,21 @@ section { width: 100%; }
 
 @media (prefers-reduced-motion: reduce) {
   .statement .line-1, .statement .line-2, .statement-lead,
-  .hero-statement .btn, .capabilities { animation: none; }
+  .hero-statement .btn, .capabilities,
+  .hero-lattice, .lattice-nodes .pulse { animation: none; }
 }
 
 /* ---------- trust strip ---------- */
 .trust { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--surface-2); }
-.trust-inner { padding: 26px 32px; display: flex; flex-wrap: wrap; gap: 40px; align-items: center; justify-content: space-between; }
+.trust-inner { padding: 26px 32px; display: flex; flex-wrap: wrap; gap: 16px 48px; align-items: center; }
 .trust .label { font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--faint); }
-.trust .stats { display: flex; flex-wrap: wrap; gap: 40px; }
+.trust .label { flex: 0 0 auto; }
+/* grow into whatever room is left, then split it evenly, so the row
+   fills the width instead of hugging the left edge */
+.trust .stats {
+  flex: 1 1 460px;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px 32px;
+}
 .stat { display: flex; align-items: baseline; gap: 10px; }
 .stat .big { font-size: 26px; font-weight: 800; color: var(--green); }
 .stat .sm { font-size: 14px; color: var(--muted); font-weight: 600; }
@@ -314,7 +342,7 @@ section { width: 100%; }
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 .card {
   background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
-  padding: 30px; display: flex; flex-direction: column; gap: 16px;
+  padding: 30px; display: flex; flex-direction: column; gap: 14px;
 }
 .card .icon {
   width: 52px; height: 52px; border-radius: 14px; background: var(--tint);
@@ -322,7 +350,23 @@ section { width: 100%; }
 }
 .card h3 { color: var(--ink); }
 .card p { font-size: 15px; line-height: 1.6; color: var(--muted); margin: 0; flex: 1; }
-.card .more { font-weight: 700; font-size: 14px; color: var(--green); }
+/* --green is ~3.1:1 at this size; --green-dk clears the 4.5:1 small-text floor */
+.card-label {
+  font-size: 13px; font-weight: 800; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--green-dk); margin-top: 2px;
+}
+.card-claim { font-size: 21px; line-height: 1.28; font-weight: 800; color: var(--ink); margin: 0; }
+
+.proof { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+.proof li { display: flex; align-items: center; gap: 11px; font-size: 15px; color: var(--muted); line-height: 1.45; }
+.proof .pi {
+  flex: 0 0 auto; width: 28px; height: 28px; border-radius: 9px;
+  background: var(--tint); color: var(--green-dk);
+  display: flex; align-items: center; justify-content: center;
+}
+.proof b { color: var(--ink); font-weight: 800; }
+.card > .btn { align-self: flex-start; margin-top: 6px; }
+.card .more { font-weight: 700; font-size: 14px; color: var(--green-dk); }
 
 /* feature list inside cards */
 .ticks { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
@@ -425,6 +469,7 @@ section { width: 100%; }
   .cta-band h2 { font-size: 30px; }
   .hero { grid-template-columns: 1fr; gap: 40px; padding: 56px 24px 50px; }
   .hero-statement { padding: 60px 24px 56px; }
+  .hero-lattice { opacity: .15; }
   .statement-lead { font-size: 18px; }
   .capabilities { font-size: 12px; }
   .grid-3, .value-grid { grid-template-columns: 1fr; }
@@ -468,8 +513,10 @@ section { width: 100%; }
 }
 
 @media (max-width: 560px) {
+  .trust .stats { grid-template-columns: 1fr; gap: 14px; }
   /* wrapping would strand a divider at the start of a line */
   .capabilities { gap: 10px 20px; }
+  .hero-lattice { opacity: .11; }
   .capabilities li { padding: 0; border-left: none; }
 
   .nav { padding: 16px 20px; }
