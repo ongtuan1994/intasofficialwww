@@ -8,9 +8,47 @@ document.addEventListener("DOMContentLoaded", function () {
       links.classList.toggle("open");
     });
     links.addEventListener("click", function (e) {
-      if (e.target.closest("a.nav-link")) links.classList.remove("open");
+      if (e.target.closest("a.nav-link") || e.target.closest(".dropdown a")) links.classList.remove("open");
     });
   }
+
+  // ---- nav dropdowns (desktop hover is CSS; this adds click + keyboard) ----
+  var navItems = document.querySelectorAll(".nav-item.has-dropdown");
+  var setItemOpen = function (item, open) {
+    var t = item.querySelector(".dropdown-toggle");
+    item.classList.toggle("open", open);
+    if (t) t.setAttribute("aria-expanded", open ? "true" : "false");
+  };
+
+  Array.prototype.forEach.call(navItems, function (navItem) {
+    var ddToggle = navItem.querySelector(".dropdown-toggle");
+    if (!ddToggle) return;
+
+    ddToggle.addEventListener("click", function (e) {
+      e.preventDefault();
+      var willOpen = !navItem.classList.contains("open");
+      // only one menu open at a time
+      Array.prototype.forEach.call(navItems, function (other) {
+        if (other !== navItem) setItemOpen(other, false);
+      });
+      setItemOpen(navItem, willOpen);
+    });
+
+    document.addEventListener("click", function (e) {
+      if (!navItem.contains(e.target)) setItemOpen(navItem, false);
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && navItem.classList.contains("open")) {
+        setItemOpen(navItem, false);
+        ddToggle.focus();
+      }
+    });
+
+    Array.prototype.forEach.call(navItem.querySelectorAll(".dropdown a"), function (a) {
+      a.addEventListener("click", function () { setItemOpen(navItem, false); });
+    });
+  });
 
   // ---- contact form: POST to Web3Forms, emailed to info@tasolve.com ----
   var form = document.getElementById("contact-form");

@@ -8,11 +8,10 @@
 const I18N = {
   en: {
     /* ---- nav / shared ---- */
-    "nav.home": "Home",
-    "nav.services": "Services",
+    "nav.services": "Consulting Services",
     "nav.about": "About",
     "nav.contact": "Contact",
-    "nav.cta": "Book a free consultation",
+    "nav.cta": "Contact us",
 
     /* ---- footer ---- */
     "footer.tagline": "Business consulting and technology solutions to help your business grow — friendly, professional, practical.",
@@ -26,13 +25,13 @@ const I18N = {
     "cta.btn": "Book a free consultation",
 
     /* ---- home: hero ---- */
-    "home.badge": "Business & Technology Partner",
-    "home.title": "Grow your business with the right advice and the right tools.",
-    "home.lead": "INTAS helps companies make smarter decisions and move faster — pairing hands-on business consulting with software built to run your operations.",
-    "home.cta1": "Book a free consultation",
-    "home.cta2": "Explore our services",
-    "float.t1": "Friendly & practical",
-    "float.t2": "Advice you can actually use",
+    "home.title": "Technology that elevates your workforce,",
+    "home.title2": "never replaces it.",
+    "home.lead": "We redesign operating models to automate the mundane, giving your best people the speed, clarity, and focus to deliver peak impact.",
+    "home.cta2": "Our services",
+    "home.caps.ai": "AI development",
+    "home.caps.innovation": "Innovation",
+    "home.caps.consulting": "Consulting",
 
     /* ---- home: trust strip ---- */
     "trust.label": "What we bring to the table",
@@ -136,15 +135,138 @@ const I18N = {
     "contact.info.phone": "Phone",
     "contact.info.hours": "Hours",
     "contact.info.hours.v": "Mon–Fri, 9:00–18:00 (ICT)",
+
+    /* ---- industries ---- */
+    "nav.industries": "Industries",
+    "ind.hero.eyebrow": "Industries",
+    "ind.hero.title": "Sectors we know from the inside.",
+    "ind.hero.text": "We work where we have operated — running centres, kitchens and ledgers ourselves, not just advising on them.",
+
+    "ind.retail.name": "Retail & Shopping Centres",
+    "ind.retail.title": "From tenant mix to the leasing engine",
+    "ind.retail.desc": "We plan the centre, price the space and build the systems that run it day to day — the same work we did for PISTA, The Glass Market Bangna and Moshi Moshi.",
+    "ind.retail.b1": "IRR-based target-rent pricelists and standardised discounting",
+    "ind.retail.b2": "Renew-vs-restructure ranking and tenant-retention playbooks",
+    "ind.retail.b3": "Catchment analysis and tenant-mix strategy from feasibility onward",
+
+    "ind.fnb.name": "Food & Beverage",
+    "ind.fnb.title": "Kitchens we have actually run",
+    "ind.fnb.desc": "Restaurant and café operations owned end to end at Croco Hill and The Glass Market food court — advice that comes from working the floor, not visiting it.",
+    "ind.fnb.b1": "Menu engineering, food-cost control and supplier terms",
+    "ind.fnb.b2": "Floor, kitchen and rostering SOPs with full P&L ownership",
+    "ind.fnb.b3": "CCTV estates with AI video analytics wired into daily operations",
+
+    "ind.realestate.name": "Real Estate & Property",
+    "ind.realestate.title": "Feasibility through to opening day",
+    "ind.realestate.desc": "The numbers behind a go/no-go decision, and the plan that follows it — from catchment modelling to the launch programme.",
+    "ind.realestate.b1": "Feasibility studies, market catchment and financial modelling",
+    "ind.realestate.b2": "Predictive occupancy modelling and growth-gap analysis",
+    "ind.realestate.b3": "Pre-opening brand positioning and launch programmes",
+
+    "ind.financial.name": "Financial Services",
+    "ind.financial.title": "Built inside banks, not alongside them",
+    "ind.financial.desc": "Our founders have built and run products inside Thai banks and consumer lenders — digital lending, operating models and the systems behind them.",
+    "ind.financial.b1": "Digital lending products and multi-year product roadmaps",
+    "ind.financial.b2": "Agile operating models for collections and recovery",
+    "ind.financial.b3": "HR operating systems, HRIS migration and policy assistants",
+
+    "ind.fmcg.name": "Consumer Goods & FMCG",
+    "ind.fmcg.title": "Onto the shelf, and profitable there",
+    "ind.fmcg.desc": "Getting product listed and moving through modern retail — then making the unit economics work once it is there.",
+    "ind.fmcg.b1": "Trade marketing and data-led modern-retail sell-in",
+    "ind.fmcg.b2": "Listings, chilled logistics and key-account terms",
+    "ind.fmcg.b3": "Production automation and export commercialisation",
+
+    "ind.transport.name": "Transport & Infrastructure",
+    "ind.transport.title": "Safety-critical delivery at programme scale",
+    "ind.transport.desc": "Our founders have led signalling software delivery on international metro and people-mover programmes, to the standards those systems demand.",
+    "ind.transport.b1": "Signalling software delivery on international metro programmes",
+    "ind.transport.b2": "Verification and validation to the EN 50716 safety standard",
+    "ind.transport.b3": "Quality-Cost-Delivery governance with zero budget overrun",
+
+    /* ---- about dropdown ---- */
+    "nav.about.do": "What We Do",
+    "nav.about.believe": "What We Believe",
+    "nav.about.people": "Our People & Leadership",
+    "nav.about.results": "Client Results",
+
+    /* ---- team page ---- */
+    "team.hero.eyebrow": "Our people",
+    "team.hero.title": "The people behind INTAS.",
+    "team.hero.text": "A founding team from consulting, engineering, finance and brand — who have built, run and sold the things we now help you build.",
+
+    "team.p1.role": "Founder & CEO",
+    "team.p1.disc": "Strategy, Commercial & AI",
+    "team.p1.b1": "Ex-BCG consultant; “Head of” at Central Pattana in his 20s",
+    "team.p1.b2": "Built THB 190M annual revenue as Managing Director",
+    "team.p1.b3": "Ph.D. candidate, Computational & Applied Mathematics",
+
+    "team.p2.role": "Founder & COO",
+    "team.p2.disc": "Operations & Process Optimisation",
+    "team.p2.b1": "Delivered software on a ~USD 700M rail signalling programme",
+    "team.p2.b2": "Grew engineering teams to 19, lifting output up to 200%",
+    "team.p2.b3": "Zero-finding internal audits; 21% year-on-year growth",
+
+    "team.p3.role": "Co-Founder & CFO",
+    "team.p3.disc": "Strategy, Finance & Process Improvement",
+    "team.p3.b1": "MBA, University of Cambridge; MSc Finance, Johns Hopkins",
+    "team.p3.b2": "Product owner on a $30M super-app — 2M+ users in 6 months",
+    "team.p3.b3": "Ex-Bluebik and Kasikorn Bank; AVP at Krungthai Bank",
+
+    "team.p4.role": "Co-Founder & CTO",
+    "team.p4.disc": "Tech, Solution & AI",
+    "team.p4.b1": "Architected a full business platform solo — ~850 API routes",
+    "team.p4.b2": "Runs a live revenue ledger of ฿7.8M per month",
+    "team.p4.b3": "Led software V&V to EN 50716 across five signalling projects",
+
+    "team.p5.role": "Co-Founder & CCO",
+    "team.p5.disc": "Commercial & Distribution",
+    "team.p5.b1": "Trade marketing with Tops, Lotus and Central Department Store",
+    "team.p5.b2": "Raised inside Siam Winery — Monsoon Valley and SPY",
+    "team.p5.b3": "FAA & CAAT commercial pilot licences",
+
+    "team.p6.role": "Co-Founder & CDO",
+    "team.p6.disc": "Development & Brand",
+    "team.p6.b1": "Built Central Park’s pre-opening brand positioning",
+    "team.p6.b2": "Creative Director, Thailand Coffee Fest 2021",
+    "team.p6.b3": "B.Sc. Design & Architecture (INDA), Chulalongkorn University",
+
+    /* ---- client results page ---- */
+    "results.hero.eyebrow": "Client results",
+    "results.hero.title": "Work we’ve done, and what it delivered.",
+    "results.hero.text": "A selection of INTAS engagements — the scope we owned and the numbers that came out of it.",
+
+    "results.r1.industry": "Retail",
+    "results.r1.desc": "Racquet, wellness and social club. We structured the full commercial case and investor offering across seven revenue lines, with operating partnerships spanning F&B, wellness and sport institutions.",
+    "results.r1.m1": "฿120M raise for 60% equity",
+    "results.r1.m2": "27.5% IRR",
+    "results.r1.m3": "฿53M EBITDA from Year 2",
+    "results.r1.m4": "4.3-year payback",
+
+    "results.r2.industry": "Retail & Food",
+    "results.r2.desc": "Community mall, strategy through to operations: feasibility and tenant-mix strategy, an IRR-based target-rent pricelist, a leasing and retention playbook, and a custom double-entry ERP with an agentic-AI operating layer.",
+    "results.r2.m1": "฿7.8M / month reconciled",
+    "results.r2.m2": "201 monthly invoices",
+    "results.r2.m3": "Zero unexplained entries",
+
+    "results.r3.industry": "Retail",
+    "results.r3.desc": "Discovery and proposal for a supply-chain “digital thread” — end-to-end visibility from licensor approval to store shelf, scoped around five AI surfaces including a launch tracker, three-way match and a backward planner.",
+    "results.r3.m1": "~1,000 monthly SKU launches in scope",
+    "results.r3.m2": "5 AI surfaces designed",
+
+    "results.r4.industry": "Food & Beverage",
+    "results.r4.desc": "Café and restaurant operations end to end — a full CCTV estate designed, installed and commissioned with AI video analytics wired into daily monitoring, alongside menu engineering, food-cost control and P&L management.",
+    "results.r4.m1": "AI video analytics live",
+    "results.r4.m2": "Full F&B operations",
+    "results.r4.m3": "Menu & food-cost engineering",
   },
 
   th: {
     /* ---- nav / shared ---- */
-    "nav.home": "หน้าแรก",
-    "nav.services": "บริการ",
+    "nav.services": "บริการที่ปรึกษา",
     "nav.about": "เกี่ยวกับเรา",
     "nav.contact": "ติดต่อ",
-    "nav.cta": "ปรึกษาฟรี",
+    "nav.cta": "ติดต่อเรา",
 
     /* ---- footer ---- */
     "footer.tagline": "ที่ปรึกษาธุรกิจและโซลูชันเทคโนโลยีที่ช่วยให้ธุรกิจของคุณเติบโต — เป็นกันเอง มืออาชีพ และใช้งานได้จริง",
@@ -158,13 +280,13 @@ const I18N = {
     "cta.btn": "ปรึกษาฟรี",
 
     /* ---- home: hero ---- */
-    "home.badge": "พาร์ทเนอร์ด้านธุรกิจและเทคโนโลยี",
-    "home.title": "ทำให้ธุรกิจเติบโต ด้วยคำแนะนำที่ใช่และเครื่องมือที่ใช่",
-    "home.lead": "INTAS ช่วยให้ธุรกิจตัดสินใจได้ฉลาดขึ้นและก้าวได้เร็วขึ้น — ผสานการให้คำปรึกษาธุรกิจแบบลงมือทำจริง เข้ากับซอฟต์แวร์ที่สร้างมาเพื่อขับเคลื่อนงานของคุณ",
-    "home.cta1": "ปรึกษาฟรี",
+    "home.title": "เทคโนโลยีที่ยกระดับคนของคุณ",
+    "home.title2": "ไม่ใช่แทนที่พวกเขา",
+    "home.lead": "เราออกแบบวิธีการทำงานใหม่ ให้ระบบอัตโนมัติรับงานซ้ำซากไป เพื่อให้คนเก่งของคุณมีความเร็ว ความชัดเจน และสมาธิในการสร้างผลงานที่ดีที่สุด",
     "home.cta2": "ดูบริการของเรา",
-    "float.t1": "เป็นกันเองและใช้ได้จริง",
-    "float.t2": "คำแนะนำที่นำไปใช้ได้เลย",
+    "home.caps.ai": "พัฒนา AI",
+    "home.caps.innovation": "นวัตกรรม",
+    "home.caps.consulting": "ที่ปรึกษา",
 
     /* ---- home: trust strip ---- */
     "trust.label": "สิ่งที่เรามอบให้",
@@ -268,6 +390,130 @@ const I18N = {
     "contact.info.phone": "โทรศัพท์",
     "contact.info.hours": "เวลาทำการ",
     "contact.info.hours.v": "จันทร์–ศุกร์ 9:00–18:00 น. (เวลาไทย)",
+
+    /* ---- industries ---- */
+    "nav.industries": "อุตสาหกรรม",
+    "ind.hero.eyebrow": "อุตสาหกรรม",
+    "ind.hero.title": "อุตสาหกรรมที่เรารู้จากการลงมือทำจริง",
+    "ind.hero.text": "เราทำงานในสายที่เราเคยบริหารเอง — ทั้งศูนย์การค้า ครัว และบัญชี ไม่ใช่เพียงให้คำแนะนำจากภายนอก",
+
+    "ind.retail.name": "ค้าปลีกและศูนย์การค้า",
+    "ind.retail.title": "ตั้งแต่ส่วนผสมผู้เช่าจนถึงระบบการปล่อยเช่า",
+    "ind.retail.desc": "เราวางแผนศูนย์การค้า กำหนดราคาพื้นที่ และสร้างระบบที่ใช้บริหารงานประจำวัน — งานแบบเดียวกับที่ทำให้ PISTA, The Glass Market Bangna และ Moshi Moshi",
+    "ind.retail.b1": "ตารางค่าเช่าเป้าหมายอิง IRR และการให้ส่วนลดอย่างมีมาตรฐาน",
+    "ind.retail.b2": "แบบจำลองจัดลำดับต่อสัญญาหรือปรับโครงสร้าง และคู่มือรักษาผู้เช่า",
+    "ind.retail.b3": "วิเคราะห์พื้นที่รับบริการและกลยุทธ์ส่วนผสมผู้เช่าตั้งแต่ขั้นศึกษาความเป็นไปได้",
+
+    "ind.fnb.name": "อาหารและเครื่องดื่ม",
+    "ind.fnb.title": "ครัวที่เราลงมือบริหารเอง",
+    "ind.fnb.desc": "ดูแลงานร้านอาหารและคาเฟ่ครบวงจรที่ Croco Hill และฟู้ดคอร์ท The Glass Market — คำแนะนำที่มาจากการยืนหน้างานจริง",
+    "ind.fnb.b1": "ออกแบบเมนู ควบคุมต้นทุนอาหาร และเจรจาเงื่อนไขซัพพลายเออร์",
+    "ind.fnb.b2": "มาตรฐานงานหน้าร้าน ครัว และการจัดตารางพนักงาน พร้อมดูแลกำไรขาดทุน",
+    "ind.fnb.b3": "ระบบกล้องวงจรปิดพร้อมวิเคราะห์วิดีโอด้วย AI เชื่อมกับงานประจำวัน",
+
+    "ind.realestate.name": "อสังหาริมทรัพย์",
+    "ind.realestate.title": "ตั้งแต่ศึกษาความเป็นไปได้จนถึงวันเปิดตัว",
+    "ind.realestate.desc": "ตัวเลขเบื้องหลังการตัดสินใจไปต่อหรือไม่ไปต่อ และแผนงานที่ตามมา ตั้งแต่แบบจำลองพื้นที่รับบริการจนถึงแผนเปิดโครงการ",
+    "ind.realestate.b1": "ศึกษาความเป็นไปได้ วิเคราะห์พื้นที่รับบริการ และแบบจำลองทางการเงิน",
+    "ind.realestate.b2": "แบบจำลองคาดการณ์อัตราการเช่าและวิเคราะห์ช่องว่างการเติบโต",
+    "ind.realestate.b3": "วางตำแหน่งแบรนด์ก่อนเปิดตัวและแผนงานเปิดโครงการ",
+
+    "ind.financial.name": "บริการทางการเงิน",
+    "ind.financial.title": "สร้างจากภายในธนาคาร ไม่ใช่จากภายนอก",
+    "ind.financial.desc": "ผู้ก่อตั้งของเราเคยสร้างและดูแลผลิตภัณฑ์ภายในธนาคารไทยและผู้ให้สินเชื่อรายย่อย ทั้งสินเชื่อดิจิทัล รูปแบบการทำงาน และระบบเบื้องหลัง",
+    "ind.financial.b1": "ผลิตภัณฑ์สินเชื่อดิจิทัลและแผนพัฒนาผลิตภัณฑ์ระยะยาว",
+    "ind.financial.b2": "รูปแบบการทำงานแบบ Agile สำหรับงานติดตามและเร่งรัดหนี้",
+    "ind.financial.b3": "ระบบบริหารทรัพยากรบุคคล การย้ายระบบ HRIS และผู้ช่วยตอบนโยบาย",
+
+    "ind.fmcg.name": "สินค้าอุปโภคบริโภค",
+    "ind.fmcg.title": "ขึ้นชั้นวาง และทำกำไรได้จริง",
+    "ind.fmcg.desc": "พาสินค้าเข้าสู่ช่องทางค้าปลีกสมัยใหม่ และทำให้ต้นทุนต่อหน่วยคุ้มค่าเมื่อวางขายแล้ว",
+    "ind.fmcg.b1": "การตลาดเทรดและการขายเข้าช่องทางค้าปลีกสมัยใหม่ด้วยข้อมูล",
+    "ind.fmcg.b2": "การขึ้นทะเบียนสินค้า ระบบขนส่งควบคุมอุณหภูมิ และเงื่อนไขลูกค้าหลัก",
+    "ind.fmcg.b3": "ระบบอัตโนมัติในการผลิตและการทำตลาดส่งออก",
+
+    "ind.transport.name": "ขนส่งและโครงสร้างพื้นฐาน",
+    "ind.transport.title": "งานที่ความปลอดภัยเป็นเดิมพัน ในระดับโครงการใหญ่",
+    "ind.transport.desc": "ผู้ก่อตั้งของเราเคยนำการส่งมอบซอฟต์แวร์อาณัติสัญญาณในโครงการรถไฟฟ้าและระบบขนส่งอัตโนมัติระดับนานาชาติ ตามมาตรฐานที่ระบบเหล่านั้นกำหนด",
+    "ind.transport.b1": "ส่งมอบซอฟต์แวร์อาณัติสัญญาณในโครงการรถไฟฟ้าระดับนานาชาติ",
+    "ind.transport.b2": "การตรวจสอบและทวนสอบตามมาตรฐานความปลอดภัย EN 50716",
+    "ind.transport.b3": "การกำกับดูแลคุณภาพ ต้นทุน และกำหนดส่งมอบ โดยไม่เกินงบประมาณ",
+
+    /* ---- about dropdown ---- */
+    "nav.about.do": "สิ่งที่เราทำ",
+    "nav.about.believe": "สิ่งที่เราเชื่อ",
+    "nav.about.people": "ทีมงานและผู้บริหาร",
+    "nav.about.results": "ผลงานลูกค้า",
+
+    /* ---- team page ---- */
+    "team.hero.eyebrow": "ทีมของเรา",
+    "team.hero.title": "ทีมเบื้องหลัง INTAS",
+    "team.hero.text": "ทีมผู้ก่อตั้งจากสายที่ปรึกษา วิศวกรรม การเงิน และแบรนด์ — ผู้ที่เคยสร้าง บริหาร และขายในสิ่งที่เราช่วยคุณสร้างในวันนี้",
+
+    "team.p1.role": "ผู้ก่อตั้งและประธานเจ้าหน้าที่บริหาร",
+    "team.p1.disc": "กลยุทธ์ การพาณิชย์ และ AI",
+    "team.p1.b1": "อดีตที่ปรึกษา BCG; ขึ้นสู่ระดับ “Head of” ที่เซ็นทรัลพัฒนาตั้งแต่อายุ 20 กว่า",
+    "team.p1.b2": "สร้างรายได้ 190 ล้านบาทต่อปีในฐานะกรรมการผู้จัดการ",
+    "team.p1.b3": "นักศึกษาปริญญาเอก คณิตศาสตร์ประยุกต์และการคำนวณ",
+
+    "team.p2.role": "ผู้ก่อตั้งและประธานเจ้าหน้าที่ฝ่ายปฏิบัติการ",
+    "team.p2.disc": "ปฏิบัติการและการปรับปรุงกระบวนการ",
+    "team.p2.b1": "ส่งมอบซอฟต์แวร์ในโครงการอาณัติสัญญาณรถไฟมูลค่าราว 700 ล้านดอลลาร์สหรัฐ",
+    "team.p2.b2": "ขยายทีมวิศวกรรมเป็น 19 คน เพิ่มผลงานได้ถึง 200%",
+    "team.p2.b3": "ผ่านการตรวจสอบภายในโดยไม่พบข้อบกพร่อง; เติบโต 21% ต่อปี",
+
+    "team.p3.role": "ผู้ร่วมก่อตั้งและประธานเจ้าหน้าที่ฝ่ายการเงิน",
+    "team.p3.disc": "กลยุทธ์ การเงิน และการปรับปรุงกระบวนการ",
+    "team.p3.b1": "MBA มหาวิทยาลัยเคมบริดจ์; MSc Finance มหาวิทยาลัยจอห์นส์ ฮอปกินส์",
+    "team.p3.b2": "Product Owner ซูเปอร์แอปมูลค่า 30 ล้านดอลลาร์ — ผู้ใช้กว่า 2 ล้านคนใน 6 เดือน",
+    "team.p3.b3": "อดีต Bluebik และธนาคารกสิกรไทย; ปัจจุบัน AVP ธนาคารกรุงไทย",
+
+    "team.p4.role": "ผู้ร่วมก่อตั้งและประธานเจ้าหน้าที่ฝ่ายเทคโนโลยี",
+    "team.p4.disc": "เทคโนโลยี โซลูชัน และ AI",
+    "team.p4.b1": "ออกแบบและพัฒนาแพลตฟอร์มธุรกิจครบวงจรด้วยตนเอง — API ราว 850 เส้นทาง",
+    "team.p4.b2": "ดูแลบัญชีรายได้จริง 7.8 ล้านบาทต่อเดือน",
+    "team.p4.b3": "นำงานตรวจสอบและทวนสอบซอฟต์แวร์ตามมาตรฐาน EN 50716 ใน 5 โครงการ",
+
+    "team.p5.role": "ผู้ร่วมก่อตั้งและประธานเจ้าหน้าที่ฝ่ายพาณิชย์",
+    "team.p5.disc": "การพาณิชย์และการจัดจำหน่าย",
+    "team.p5.b1": "การตลาดเทรดกับ Tops, Lotus และห้างสรรพสินค้าเซ็นทรัล",
+    "team.p5.b2": "เติบโตในสยามไวเนอรี่ — Monsoon Valley และ SPY",
+    "team.p5.b3": "ใบอนุญาตนักบินพาณิชย์ FAA และ CAAT",
+
+    "team.p6.role": "ผู้ร่วมก่อตั้งและประธานเจ้าหน้าที่ฝ่ายพัฒนาธุรกิจ",
+    "team.p6.disc": "การพัฒนาและแบรนด์",
+    "team.p6.b1": "วางตำแหน่งแบรนด์ Central Park ก่อนเปิดตัว",
+    "team.p6.b2": "Creative Director งาน Thailand Coffee Fest 2021",
+    "team.p6.b3": "วท.บ. การออกแบบและสถาปัตยกรรม (INDA) จุฬาลงกรณ์มหาวิทยาลัย",
+
+    /* ---- client results page ---- */
+    "results.hero.eyebrow": "ผลงานลูกค้า",
+    "results.hero.title": "งานที่เราทำ และผลลัพธ์ที่เกิดขึ้น",
+    "results.hero.text": "ตัวอย่างโครงการของ INTAS — ขอบเขตงานที่เราดูแล และตัวเลขที่เกิดขึ้นจริง",
+
+    "results.r1.industry": "ค้าปลีก",
+    "results.r1.desc": "สโมสรกีฬาแร็กเกต สุขภาพ และสังคม เราจัดทำแผนธุรกิจและข้อเสนอสำหรับนักลงทุนอย่างครบถ้วนใน 7 สายรายได้ พร้อมพันธมิตรด้านอาหารและเครื่องดื่ม สุขภาพ และสถาบันกีฬา",
+    "results.r1.m1": "ระดมทุน 120 ล้านบาท แลกหุ้น 60%",
+    "results.r1.m2": "IRR 27.5%",
+    "results.r1.m3": "EBITDA 53 ล้านบาท ตั้งแต่ปีที่ 2",
+    "results.r1.m4": "คืนทุน 4.3 ปี",
+
+    "results.r2.industry": "ค้าปลีกและอาหาร",
+    "results.r2.desc": "คอมมูนิตี้มอลล์ ตั้งแต่กลยุทธ์จนถึงการปฏิบัติงาน: ศึกษาความเป็นไปได้และกลยุทธ์ส่วนผสมผู้เช่า ตารางค่าเช่าเป้าหมายอิง IRR คู่มือการปล่อยเช่าและรักษาผู้เช่า และระบบ ERP บัญชีคู่ที่พัฒนาขึ้นเอง พร้อมชั้นการทำงานด้วย AI",
+    "results.r2.m1": "กระทบยอด 7.8 ล้านบาท/เดือน",
+    "results.r2.m2": "201 ใบแจ้งหนี้ต่อเดือน",
+    "results.r2.m3": "ไม่มีรายการที่อธิบายไม่ได้",
+
+    "results.r3.industry": "ค้าปลีก",
+    "results.r3.desc": "งานศึกษาและข้อเสนอสำหรับ “digital thread” ของซัพพลายเชน — มองเห็นได้ตลอดสายตั้งแต่การอนุมัติลิขสิทธิ์จนถึงชั้นวางสินค้า ออกแบบรอบ 5 ส่วนงาน AI ทั้งตัวติดตามการเปิดตัว การจับคู่สามทาง และตัววางแผนย้อนกลับ",
+    "results.r3.m1": "ครอบคลุมการเปิดตัวสินค้าราว 1,000 SKU ต่อเดือน",
+    "results.r3.m2": "ออกแบบส่วนงาน AI 5 ส่วน",
+
+    "results.r4.industry": "อาหารและเครื่องดื่ม",
+    "results.r4.desc": "ดูแลงานปฏิบัติการคาเฟ่และร้านอาหารครบวงจร — ออกแบบ ติดตั้ง และทดสอบระบบกล้องวงจรปิดทั้งหมด พร้อมวิเคราะห์วิดีโอด้วย AI เชื่อมเข้ากับการติดตามงานประจำวัน ควบคู่กับการออกแบบเมนู ควบคุมต้นทุนอาหาร และบริหารกำไรขาดทุน",
+    "results.r4.m1": "ระบบวิเคราะห์วิดีโอ AI ใช้งานจริง",
+    "results.r4.m2": "ปฏิบัติการอาหารและเครื่องดื่มครบวงจร",
+    "results.r4.m3": "ออกแบบเมนูและควบคุมต้นทุน",
   },
 };
 
