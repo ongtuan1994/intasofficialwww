@@ -4,11 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Client Results — INTAS</title>
-  <meta name="description" content="Selected INTAS engagements — PISTA, The Glass Market Bangna, Moshi Moshi and Croco Hill.">
+  <meta name="description" content="INTAS client results — Talent OS for Central Pattana (CPN), plus PISTA, The Glass Market Bangna, Moshi Moshi and Croco Hill.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
+  <script>document.documentElement.className += " js";</script>
 </head>
 <body>
 <div class="page">
@@ -39,7 +40,7 @@
         </div>
         <div class="nav-item has-dropdown">
           <div class="nav-item-row">
-            <a href="services.html" class="nav-link" data-i18n="nav.services">Consulting Services</a>
+            <a href="services.html" class="nav-link" data-i18n="nav.services">Services</a>
             <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true" aria-label="Toggle services menu">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
             </button>
@@ -74,7 +75,7 @@
   </header>
 
   <!-- PAGE HERO -->
-  <section class="page-hero wrap">
+  <section class="page-hero wrap" data-reveal>
     <div class="badge" style="margin-left:auto;margin-right:auto;"><span class="dot"></span><span data-i18n="results.hero.eyebrow">Client results</span></div>
     <h1 data-i18n="results.hero.title">Work we’ve done, and what it delivered.</h1>
     <p data-i18n="results.hero.text">A selection of INTAS engagements — the scope we owned and the numbers that came out of it.</p>
@@ -84,7 +85,18 @@
   <section class="wrap section-pad" style="padding-top:24px;">
     <div class="results-grid">
 
-      <article class="result">
+      <article class="result" data-reveal>
+        <div class="eyebrow" data-i18n="results.r5.industry">Retail &amp; Shopping Centres</div>
+        <h3>Central Pattana (SET: CPN)</h3>
+        <p data-i18n="results.r5.desc">Talent OS — an AI operating layer for enterprise hiring, built on CPN’s own data. Eight hiring pain points, eight fixes in the product: job descriptions drafted with sources named, band decisions on screen, cited bilingual screening.</p>
+        <div class="metrics">
+          <span class="metric" data-i18n="results.r5.m1">8 fixes built, 4 already live</span>
+          <span class="metric" data-i18n="results.r5.m2">Every AI act human-approved</span>
+          <span class="metric" data-i18n="results.r5.m3">Bilingual TH / EN</span>
+        </div>
+      </article>
+
+      <article class="result" data-reveal>
         <div class="eyebrow" data-i18n="results.r1.industry">Retail</div>
         <h3>PISTA — Mega Bangna</h3>
         <p data-i18n="results.r1.desc">Racquet, wellness and social club. We structured the full commercial case and investor offering across seven revenue lines, with operating partnerships spanning F&amp;B, wellness and sport institutions.</p>
@@ -96,7 +108,7 @@
         </div>
       </article>
 
-      <article class="result">
+      <article class="result" data-reveal>
         <div class="eyebrow" data-i18n="results.r2.industry">Retail &amp; Food</div>
         <h3>The Glass Market Bangna</h3>
         <p data-i18n="results.r2.desc">Community mall, strategy through to operations: feasibility and tenant-mix strategy, an IRR-based target-rent pricelist, a leasing and retention playbook, and a custom double-entry ERP with an agentic-AI operating layer.</p>
@@ -107,17 +119,20 @@
         </div>
       </article>
 
-      <article class="result">
+      <article class="result" data-reveal>
         <div class="eyebrow" data-i18n="results.r3.industry">Retail</div>
         <h3>Moshi Moshi (SET: MOSHI)</h3>
-        <p data-i18n="results.r3.desc">Discovery and proposal for a supply-chain “digital thread” — end-to-end visibility from licensor approval to store shelf, scoped around five AI surfaces including a launch tracker, three-way match and a backward planner.</p>
+        <p data-i18n="results.r3.desc">Two workstreams: a supply-chain “digital thread” from licensor approval to store shelf, and KOTAE — a customer-service assistant that answers on LINE, social and web around the clock, and hands off to a person rather than guessing.</p>
         <div class="metrics">
           <span class="metric" data-i18n="results.r3.m1">~1,000 monthly SKU launches in scope</span>
           <span class="metric" data-i18n="results.r3.m2">5 AI surfaces designed</span>
+          <span class="metric" data-i18n="results.r3.m3">24/7 across LINE, social and web</span>
+          <span class="metric" data-i18n="results.r3.m4">Stock and restock answered by variant</span>
+          <span class="metric" data-i18n="results.r3.m5">Answers, or says it cannot</span>
         </div>
       </article>
 
-      <article class="result">
+      <article class="result" data-reveal>
         <div class="eyebrow" data-i18n="results.r4.industry">Food &amp; Beverage</div>
         <h3>Croco Hill</h3>
         <p data-i18n="results.r4.desc">Café and restaurant operations end to end — a full CCTV estate designed, installed and commissioned with AI video analytics wired into daily monitoring, alongside menu engineering, food-cost control and P&amp;L management.</p>
@@ -133,7 +148,7 @@
 
   <!-- CTA BAND -->
   <section class="wrap" style="padding:0 32px 90px;">
-    <div class="cta-band">
+    <div class="cta-band" data-reveal>
       <h2 data-i18n="cta.title">Let’s talk about what’s next for your business.</h2>
       <p data-i18n="cta.text">Book a free, no-pressure consultation and we’ll help you find the fastest path forward.</p>
       <a href="contact.html" class="btn btn-bright" data-i18n="cta.btn">Book a free consultation</a>
@@ -151,7 +166,7 @@
         <div class="head" data-i18n="footer.explore">Explore</div>
         <div class="links">
           <a href="industries.html" data-i18n="nav.industries">Industries</a>
-          <a href="services.html" data-i18n="nav.services">Consulting Services</a>
+          <a href="services.html" data-i18n="nav.services">Services</a>
           <a href="about.html" data-i18n="nav.about">About</a>
           <a href="team.html" data-i18n="nav.about.people">Our People &amp; Leadership</a>
           <a href="results.html" data-i18n="nav.about.results">Client Results</a>

@@ -50,6 +50,37 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  // ---- reveal on scroll ----
+  var revealables = document.querySelectorAll("[data-reveal]");
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (!revealables.length) {
+    // nothing to do
+  } else if (reduced || !("IntersectionObserver" in window)) {
+    // no observer support, or the visitor asked for less motion: show it all
+    Array.prototype.forEach.call(revealables, function (el) { el.classList.add("is-in"); });
+  } else {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-in");
+        observer.unobserve(entry.target);   // reveal once, never re-trigger
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+
+    Array.prototype.forEach.call(revealables, function (el) {
+      // siblings arrive in sequence rather than as one block
+      var group = el.parentNode ? el.parentNode.children : [el];
+      var i = 0, n = 0;
+      for (; n < group.length; n++) {
+        if (group[n] === el) break;
+        if (group[n].hasAttribute && group[n].hasAttribute("data-reveal")) i++;
+      }
+      if (i > 0) el.style.transitionDelay = Math.min(i * 80, 240) + "ms";
+      observer.observe(el);
+    });
+  }
+
   // ---- contact form: POST to Web3Forms, emailed to info@tasolve.com ----
   var form = document.getElementById("contact-form");
   if (form) {

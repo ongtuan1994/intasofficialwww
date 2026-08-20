@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
+  <script>document.documentElement.className += " js";</script>
 </head>
 <body>
 <div class="page">
@@ -39,7 +40,7 @@
         </div>
         <div class="nav-item has-dropdown">
           <div class="nav-item-row">
-            <a href="services.html" class="nav-link active" data-i18n="nav.services">Consulting Services</a>
+            <a href="services.html" class="nav-link active" data-i18n="nav.services">Services</a>
             <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true" aria-label="Toggle services menu">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
             </button>
@@ -74,7 +75,7 @@
   </header>
 
   <!-- PAGE HERO -->
-  <section class="page-hero wrap">
+  <section class="page-hero wrap" data-reveal>
     <div class="badge" style="margin-left:auto;margin-right:auto;"><span class="dot"></span><span data-i18n="home.svc.eyebrow">What we do</span></div>
     <h1 data-i18n="services.hero.title">Services built around how you actually work.</h1>
     <p data-i18n="services.hero.text">Three focused service lines — from strategy to the software that runs it — delivered with the same friendly, practical approach.</p>
@@ -82,16 +83,18 @@
 
   <!-- SERVICE 1 -->
   <section id="consulting" class="wrap section-pad" style="padding-top:24px;">
-    <div class="panel">
+    <div class="panel" data-reveal>
       <div>
         <div class="eyebrow" data-i18n="services.s1.eyebrow">01 — Consulting</div>
         <h2 class="h2" style="font-size:32px;margin-bottom:16px;" data-i18n="services.s1.title">Business Consulting</h2>
-        <p style="font-size:16px;color:#6A6A66;margin:0 0 22px;" data-i18n="services.s1.desc">We sit down with you to understand the real problem, then turn it into a clear plan you can act on.</p>
+        <p style="font-size:16px;color:#6A6A66;margin:0 0 22px;" data-i18n="services.s1.desc">We sit down with you to understand the real problem, then turn it into a clear plan you can act on. Strategy that stays grounded in your day-to-day.</p>
         <ul class="ticks">
           <li data-i18n="services.s1.b1">Strategy &amp; growth planning</li>
           <li data-i18n="services.s1.b2">Operations &amp; process improvement</li>
           <li data-i18n="services.s1.b3">Financial &amp; pricing guidance</li>
           <li data-i18n="services.s1.b4">Market &amp; competitor research</li>
+          <li data-i18n="services.s1.b5">Feasibility studies and investor-grade financial modelling</li>
+          <li data-i18n="services.s1.b6">Capital raises, investor offerings and partnership structuring</li>
         </ul>
       </div>
       <div class="photo has-img" style="aspect-ratio:5/4;"><img src="assets/img/consulting.jpg" alt="Business consulting session"></div>
@@ -100,17 +103,22 @@
 
   <!-- SERVICE 2 -->
   <section id="software" class="wrap" style="padding:0 32px 44px;">
-    <div class="panel">
+    <div class="panel" data-reveal>
       <div class="photo has-img" style="aspect-ratio:5/4;order:2;"><img src="assets/img/dashboard.jpg" alt="Custom software dashboard"></div>
       <div style="order:1;">
-        <div class="eyebrow" data-i18n="services.s2.eyebrow">02 — Software</div>
+        <div class="eyebrow" data-i18n="services.s2.eyebrow">02 — Software &amp; AI</div>
         <h2 class="h2" style="font-size:32px;margin-bottom:16px;" data-i18n="services.s2.title">Custom Enterprise Software</h2>
-        <p style="font-size:16px;color:#6A6A66;margin:0 0 22px;" data-i18n="services.s2.desc">Stop renting a dozen SaaS tools that don’t quite fit. We design and build software around your operations.</p>
+        <p style="font-size:16px;color:#6A6A66;margin:0 0 22px;" data-i18n="services.s2.desc">Stop renting a dozen SaaS tools that don’t quite fit. We design and build software around your operations — one system you own, that grows with you, with AI wired into the work rather than bolted on the side.</p>
         <ul class="ticks">
-          <li data-i18n="services.s2.b1">ERP, CRM &amp; internal tools</li>
+          <li data-i18n="services.s2.b1">ERP, CRM and double-entry finance systems</li>
           <li data-i18n="services.s2.b2">Workflow &amp; operations automation</li>
           <li data-i18n="services.s2.b3">Dashboards &amp; reporting</li>
           <li data-i18n="services.s2.b4">Integration with your existing systems</li>
+          <li data-i18n="services.s2.b5">AI agents that draft, match and cite — people keep the approvals</li>
+          <li data-i18n="services.s2.b6">HR &amp; talent platforms — hiring, banding and onboarding</li>
+          <li data-i18n="services.s2.b7">24/7 customer-service assistants on LINE, social and web</li>
+          <li data-i18n="services.s2.b8">Supply-chain visibility from licensor approval to store shelf</li>
+          <li data-i18n="services.s2.b9">AI video analytics wired into daily operations</li>
         </ul>
       </div>
     </div>
@@ -118,11 +126,11 @@
 
   <!-- SERVICE 3 -->
   <section id="ewedding" class="wrap" style="padding:0 32px 44px;">
-    <div class="panel">
+    <div class="panel" data-reveal>
       <div>
         <div class="eyebrow" data-i18n="services.s3.eyebrow">03 — Digital</div>
         <h2 class="h2" style="font-size:32px;margin-bottom:16px;" data-i18n="services.s3.title">e-Wedding Cards &amp; Games</h2>
-        <p style="font-size:16px;color:#6A6A66;margin:0 0 22px;" data-i18n="services.s3.desc">Bring your celebration online with a beautiful digital invitation and interactive games your guests will love.</p>
+        <p style="font-size:16px;color:#6A6A66;margin:0 0 22px;" data-i18n="services.s3.desc">Bring your celebration online with a beautiful digital invitation and interactive games your guests will love — mobile-friendly and easy to share.</p>
         <ul class="ticks">
           <li data-i18n="services.s3.b1">Custom-designed digital invitations</li>
           <li data-i18n="services.s3.b2">RSVP &amp; guest management</li>
@@ -136,22 +144,22 @@
 
   <!-- HOW WE WORK -->
   <section class="wrap section-pad">
-    <div class="center" style="margin-bottom:40px;">
+    <div class="center" style="margin-bottom:40px;" data-reveal>
       <div class="eyebrow" data-i18n="services.how.eyebrow">How we work</div>
       <h2 class="h2" data-i18n="services.how.title">Simple, transparent, hands-on.</h2>
     </div>
     <div class="value-grid">
-      <div class="value">
+      <div class="value" data-reveal>
         <div class="num">01</div>
         <h3 data-i18n="services.how.1.t">Listen</h3>
         <p data-i18n="services.how.1.d">We start with a free consultation to understand your goals and constraints.</p>
       </div>
-      <div class="value">
+      <div class="value" data-reveal>
         <div class="num">02</div>
         <h3 data-i18n="services.how.2.t">Plan</h3>
         <p data-i18n="services.how.2.d">We map out a clear, practical plan with honest timelines and pricing.</p>
       </div>
-      <div class="value">
+      <div class="value" data-reveal>
         <div class="num">03</div>
         <h3 data-i18n="services.how.3.t">Build &amp; support</h3>
         <p data-i18n="services.how.3.d">We deliver, then stay with you — training, tweaks and support included.</p>
@@ -161,7 +169,7 @@
 
   <!-- CTA BAND -->
   <section class="wrap" style="padding:0 32px 90px;">
-    <div class="cta-band">
+    <div class="cta-band" data-reveal>
       <h2 data-i18n="cta.title">Let’s talk about what’s next for your business.</h2>
       <p data-i18n="cta.text">Book a free, no-pressure consultation and we’ll help you find the fastest path forward.</p>
       <a href="contact.html" class="btn btn-bright" data-i18n="cta.btn">Book a free consultation</a>
@@ -179,7 +187,7 @@
         <div class="head" data-i18n="footer.explore">Explore</div>
         <div class="links">
           <a href="industries.html" data-i18n="nav.industries">Industries</a>
-          <a href="services.html" data-i18n="nav.services">Consulting Services</a>
+          <a href="services.html" data-i18n="nav.services">Services</a>
           <a href="about.html" data-i18n="nav.about">About</a>
           <a href="team.html" data-i18n="nav.about.people">Our People &amp; Leadership</a>
           <a href="results.html" data-i18n="nav.about.results">Client Results</a>

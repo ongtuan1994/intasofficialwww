@@ -392,6 +392,23 @@ section { width: 100%; }
 .cta-band p { font-size: 17px; color: #B7C4BB; margin: 0 auto 30px; max-width: 520px; position: relative; }
 .cta-band .btn { position: relative; }
 
+/* ---------- scroll reveal ----------
+   Gated behind html.js, set by an inline script in <head>. Without JS the
+   class never lands, the hidden state never applies, and everything renders
+   normally rather than staying invisible forever. */
+html.js [data-reveal] {
+  opacity: 0; transform: translateY(16px);
+  transition: opacity .55s ease, transform .55s cubic-bezier(.2, .7, .3, 1);
+  will-change: opacity, transform;
+}
+/* drop the compositor hint once the element has arrived */
+html.js [data-reveal].is-in { opacity: 1; transform: none; will-change: auto; }
+
+@media (prefers-reduced-motion: reduce) {
+  html.js [data-reveal],
+  html.js [data-reveal].is-in { opacity: 1; transform: none; transition: none; }
+}
+
 /* ---------- footer ---------- */
 .site-footer { margin-top: auto; border-top: 1px solid var(--line); background: var(--surface-2); }
 .footer-grid { padding: 52px 32px 28px; display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; }
