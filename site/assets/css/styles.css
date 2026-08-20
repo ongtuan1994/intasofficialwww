@@ -146,7 +146,7 @@ h1, h2, h3 { color: var(--ink); letter-spacing: -0.02em; margin: 0; }
 .dropdown-2col { display: grid; grid-template-columns: 1fr 1fr; min-width: 500px; }
 
 /* sticky header must not cover the heading we jump to */
-#consulting, #software, #ewedding,
+#consulting, #software, #assistant, #ewedding,
 #what-we-do, #what-we-believe,
 #retail, #fnb, #realestate, #financial, #fmcg, #transport { scroll-margin-top: 104px; }
 
@@ -253,7 +253,19 @@ section { width: 100%; }
 .float-card .t2 { font-size: 13px; color: #7A7A76; }
 
 /* ---------- home statement hero ---------- */
-.hero-statement { position: relative; overflow: hidden; text-align: center; padding: 104px 32px 92px; }
+.hero-statement {
+  position: relative; overflow: hidden;
+  text-align: center; padding: 104px 32px 92px;
+  /* own the first screen, so the punchline stands alone and the trust strip
+     lands just below the fold */
+  /* header is 83px on desktop, 75px on mobile; subtracting less than the
+     smaller of the two keeps the strip below the fold on both */
+  min-height: calc(100vh - 70px);
+  min-height: calc(100svh - 70px);
+  display: flex; flex-direction: column; justify-content: center;
+}
+/* a stretched flex child would blow the pill button out to full width */
+.hero-statement > .btn { align-self: center; }
 /* everything except the backdrop sits above it */
 .hero-statement > *:not(.hero-lattice) { position: relative; z-index: 1; }
 .statement {
@@ -289,16 +301,18 @@ section { width: 100%; }
 /* rising node lattice behind the headline: nodes climb as they thin out */
 .hero-lattice {
   position: absolute; inset: 0; width: 100%; height: 100%;
-  z-index: 0; pointer-events: none; opacity: .3;
-  /* fade out toward the top so the mark never crowds the headline */
-  -webkit-mask-image: linear-gradient(to top, #000 10%, rgba(0,0,0,.72) 62%, transparent 99%);
-          mask-image: linear-gradient(to top, #000 10%, rgba(0,0,0,.72) 62%, transparent 99%);
+  z-index: 0; pointer-events: none; opacity: .46;
+  /* The lattice is brightest below the copy and thins sharply through the
+     headline band, which is what buys the signals their visibility without
+     eating into the headline's contrast. */
+  -webkit-mask-image: linear-gradient(to top, #000 0%, rgba(0,0,0,.92) 26%, rgba(0,0,0,.34) 58%, transparent 92%);
+          mask-image: linear-gradient(to top, #000 0%, rgba(0,0,0,.92) 26%, rgba(0,0,0,.34) 58%, transparent 92%);
   animation: lattice-in 1.2s ease .15s both;
 }
 .lattice-links line { stroke: var(--green); stroke-width: 1.1; opacity: .38; }
 .lattice-nodes circle { fill: var(--green); opacity: .45; }
 
-@keyframes lattice-in { from { opacity: 0; } to { opacity: .3; } }
+@keyframes lattice-in { from { opacity: 0; } to { opacity: .46; } }
 @keyframes node-pulse { 0%, 100% { opacity: .3; } 50% { opacity: .9; } }
 .lattice-nodes .pulse { animation: node-pulse 6s ease-in-out infinite; }
 
@@ -325,7 +339,7 @@ section { width: 100%; }
 /* ---------- trust strip ---------- */
 .trust { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--surface-2); }
 .trust-inner { padding: 26px 32px; display: flex; flex-wrap: wrap; gap: 16px 48px; align-items: center; }
-.trust .label { font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--faint); }
+.trust .label { font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
 .trust .label { flex: 0 0 auto; }
 /* grow into whatever room is left, then split it evenly, so the row
    fills the width instead of hugging the left edge */
@@ -333,12 +347,23 @@ section { width: 100%; }
   flex: 1 1 460px;
   display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px 32px;
 }
-.stat { display: flex; align-items: baseline; gap: 10px; }
-.stat .big { font-size: 26px; font-weight: 800; color: var(--green); }
-.stat .sm { font-size: 14px; color: var(--muted); font-weight: 600; }
+/* Stacked, not inline: side by side, a one-glyph value like "4" reads far
+   smaller than a word like "End-to-end", and the labels wrap unevenly.
+   On its own line every value carries the same weight and none of them break. */
+.stat {
+  display: flex; flex-direction: column; gap: 5px;
+  padding-left: 16px; border-left: 2px solid var(--line-2);
+}
+.stat .big {
+  font-size: 27px; font-weight: 800; line-height: 1.08; color: var(--green-dk);
+  white-space: nowrap; letter-spacing: -0.02em;
+}
+.stat .sm { font-size: 13.5px; line-height: 1.4; color: var(--muted); font-weight: 600; }
 
 /* ---------- cards grid ---------- */
-.grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+/* four service lines: 4-up on wide screens, 2x2 in the middle, stacked on phones */
+.grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+@media (max-width: 1180px) { .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; } }
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 .card {
   background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
@@ -354,6 +379,9 @@ section { width: 100%; }
 .card-label {
   font-size: 13px; font-weight: 800; letter-spacing: .06em;
   text-transform: uppercase; color: var(--green-dk); margin-top: 2px;
+  /* longer labels wrap to two lines; reserving both keeps every card's
+     claim starting on the same baseline across the row */
+  line-height: 1.35; min-height: 2.7em;
 }
 .card-claim { font-size: 21px; line-height: 1.28; font-weight: 800; color: var(--ink); margin: 0; }
 
@@ -486,10 +514,10 @@ html.js [data-reveal].is-in { opacity: 1; transform: none; will-change: auto; }
   .cta-band h2 { font-size: 30px; }
   .hero { grid-template-columns: 1fr; gap: 40px; padding: 56px 24px 50px; }
   .hero-statement { padding: 60px 24px 56px; }
-  .hero-lattice { opacity: .15; }
+  .hero-lattice { opacity: .26; }
   .statement-lead { font-size: 18px; }
   .capabilities { font-size: 12px; }
-  .grid-3, .value-grid { grid-template-columns: 1fr; }
+  .value-grid { grid-template-columns: 1fr; }
   .people-grid, .results-grid, .industries-grid { grid-template-columns: 1fr; }
   .grid-2 { grid-template-columns: 1fr; }
   .panel { grid-template-columns: 1fr; padding: 36px; }
@@ -544,4 +572,307 @@ html.js [data-reveal].is-in { opacity: 1; transform: none; will-change: auto; }
   .page-hero h1 { font-size: 30px; }
   .contact-panel, .panel { padding: 26px; }
   .float-card { left: 0; bottom: -18px; }
+}
+
+/* ---------- chat demo (services: conversational AI) ----------
+   A looping illustration of the assistant answering. Sequencing lives in
+   main.js; without it every bubble simply renders, which reads fine. */
+.chat-demo {
+  background: var(--surface-2); border: 1px solid var(--line);
+  border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm);
+}
+.chat-head {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 18px; background: var(--surface); border-bottom: 1px solid var(--line);
+}
+.chat-avatar {
+  width: 34px; height: 34px; border-radius: 11px; flex: 0 0 auto;
+  background: var(--green-dk); color: #fff; display: grid; place-items: center;
+}
+.chat-name { font-size: 14px; font-weight: 800; color: var(--ink); line-height: 1.2; }
+.chat-status { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--muted); margin-top: 2px; }
+.chat-dot {
+  width: 7px; height: 7px; border-radius: 50%; background: var(--green);
+  flex: 0 0 auto; animation: chat-pulse 2.6s ease-out infinite;
+}
+@keyframes chat-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(46,158,91,0.45); }
+  70%  { box-shadow: 0 0 0 7px rgba(46,158,91,0); }
+  100% { box-shadow: 0 0 0 0 rgba(46,158,91,0); }
+}
+.chat-time { margin-left: auto; font-size: 12px; font-weight: 700; color: var(--muted); white-space: nowrap; }
+
+.chat-body { padding: 18px; display: flex; flex-direction: column; gap: 10px; }
+
+/* typing indicator and the reply it precedes share one cell, so the
+   hand-off is a crossfade rather than a height jump */
+.slot { display: grid; justify-items: start; }
+.slot > * { grid-area: 1 / 1; }
+
+.bubble {
+  max-width: 84%; padding: 11px 15px; font-size: 14.5px; line-height: 1.5;
+  border-radius: 16px;
+}
+.bubble.me  { align-self: flex-end; background: var(--green-dk); color: #fff; border-bottom-right-radius: 5px; }
+.bubble.bot { align-self: flex-start; background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-bottom-left-radius: 5px; }
+
+.typing {
+  display: flex; gap: 5px; align-items: center; padding: 14px 16px;
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 16px; border-bottom-left-radius: 5px;
+}
+.typing i { width: 6px; height: 6px; border-radius: 50%; background: var(--muted); }
+
+/* hidden state only applies once JS is driving the sequence */
+html.js .chat-demo [data-step] {
+  opacity: 0; transform: translateY(9px);
+  transition: opacity .36s ease, transform .36s cubic-bezier(.2, .7, .3, 1);
+}
+html.js .chat-demo [data-step].show { opacity: 1; transform: none; }
+html.js .chat-demo .typing i { animation: typing-bounce 1.25s ease-in-out infinite; }
+html.js .chat-demo .typing i:nth-child(2) { animation-delay: .16s; }
+html.js .chat-demo .typing i:nth-child(3) { animation-delay: .32s; }
+@keyframes typing-bounce {
+  0%, 60%, 100% { transform: translateY(0);    opacity: .4; }
+  30%           { transform: translateY(-4px); opacity: 1; }
+}
+
+.chat-caption { margin: 14px 4px 0; font-size: 13px; line-height: 1.6; color: var(--muted); }
+
+@media (prefers-reduced-motion: reduce) {
+  .chat-dot { animation: none; box-shadow: 0 0 0 3px rgba(46,158,91,0.20); }
+  html.js .chat-demo [data-step] { opacity: 1; transform: none; transition: none; }
+  html.js .chat-demo .typing { display: none; }
+  html.js .chat-demo .typing i { animation: none; }
+}
+
+@media (max-width: 560px) {
+  .chat-body { padding: 14px; }
+  .bubble { font-size: 14px; max-width: 90%; }
+  .chat-time { display: none; }
+}
+
+html[lang="th"] .bubble { line-height: 1.75; }
+
+/* ---------- e-wedding invitation mockup ----------
+   Deliberately off-brand: it stands in for client work, so it carries the
+   invitation's own oxblood-and-cream palette rather than the INTAS green.
+   Tokens are scoped to the component so nothing leaks out. */
+.invite-mock {
+  --inv-ink:    #FEFBF4;   /* cream */
+  --inv-deep:   #7A1A10;   /* oxblood */
+  --inv-muted:  #6B565C;
+  --inv-dim:    rgba(254,251,244,0.62);
+  --inv-glass:  rgba(30,20,20,0.44);
+  --inv-edge:   rgba(254,251,244,0.16);
+  font-family: 'Prompt', 'IBM Plex Sans Thai', system-ui, sans-serif;
+}
+.invite-screen {
+  position: relative; overflow: hidden;
+  max-width: 336px; margin: 0 auto;   /* the invitation is a phone page */
+  border-radius: 26px; padding: 22px 18px 20px;
+  background: radial-gradient(120% 80% at 20% 0%, #4A2F2C 0%, #2A1C1E 45%, #1A1214 100%);
+  box-shadow: var(--shadow-lg), inset 0 0 0 1px rgba(254,251,244,0.07);
+}
+/* warm bloom standing in for the couple photograph behind the glass */
+.invite-glow {
+  position: absolute; inset: -30% -20% auto -20%; height: 90%;
+  background:
+    radial-gradient(46% 52% at 30% 40%, rgba(214,150,120,0.34), transparent 70%),
+    radial-gradient(40% 46% at 74% 26%, rgba(160,90,80,0.30), transparent 72%);
+  filter: blur(8px); pointer-events: none;
+  animation: inv-drift 18s ease-in-out infinite alternate;
+}
+@keyframes inv-drift {
+  from { transform: translate3d(-2%, 0, 0) scale(1); }
+  to   { transform: translate3d(3%, 2%, 0) scale(1.08); }
+}
+.invite-lang {
+  position: relative; z-index: 1;
+  display: inline-flex; gap: 2px; padding: 3px; margin-left: auto;
+  border-radius: 999px; background: rgba(20,14,14,0.5);
+  border: 1px solid var(--inv-edge); float: right;
+  font-size: 10px; font-weight: 500; color: var(--inv-dim);
+}
+.invite-lang span { padding: 3px 9px; border-radius: 999px; }
+.invite-lang .on { background: var(--inv-deep); color: var(--inv-ink); }
+
+.invite-body { position: relative; z-index: 1; clear: both; padding-top: 12px; }
+.invite-eyebrow {
+  margin: 0 0 6px; text-align: center;
+  font-size: 11px; font-weight: 300; color: var(--inv-dim);
+}
+.invite-names {
+  text-align: center; color: var(--inv-ink);
+  font-size: 30px; font-weight: 500; line-height: 1.15; margin-bottom: 16px;
+}
+
+.invite-card {
+  background: var(--inv-glass); border: 1px solid var(--inv-edge);
+  border-radius: 16px; padding: 13px 15px; margin-bottom: 10px;
+  -webkit-backdrop-filter: blur(9px); backdrop-filter: blur(9px);
+}
+.invite-mini {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 10px; font-weight: 500; letter-spacing: .04em;
+  text-transform: uppercase; color: var(--inv-dim); margin-bottom: 9px;
+}
+.invite-count { text-align: center; }
+.invite-count .invite-mini { justify-content: center; }
+.invite-clock { display: flex; justify-content: center; gap: 14px; }
+.invite-clock span { display: flex; flex-direction: column; align-items: center; min-width: 40px; }
+.invite-clock b {
+  font-size: 22px; font-weight: 500; color: var(--inv-ink); line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.invite-clock i { font-style: normal; font-size: 9px; color: var(--inv-dim); margin-top: 4px; }
+
+.invite-row {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 6px 0; font-size: 12px; color: var(--inv-ink); font-weight: 300;
+}
+.invite-row + .invite-row { border-top: 1px solid rgba(254,251,244,0.09); }
+.invite-row b { font-weight: 500; color: #E8A99A; font-variant-numeric: tabular-nums; }
+.invite-note { margin: 8px 0 0; font-size: 9.5px; line-height: 1.5; color: var(--inv-dim); }
+
+.invite-cta { background: rgba(254,251,244,0.93); border-color: transparent; text-align: center; margin-bottom: 0; }
+.invite-cta p { margin: 0 0 10px; font-size: 12px; font-weight: 400; color: #3A2A2C; }
+.invite-btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: var(--inv-deep); color: var(--inv-ink);
+  font-size: 11.5px; font-weight: 500; padding: 9px 18px; border-radius: 999px;
+}
+
+/* the load sequence: each block rises as the invitation opens */
+html.js .invite-mock [data-inv] {
+  opacity: 0; transform: translateY(12px);
+  transition: opacity .6s ease, transform .6s cubic-bezier(.2, .7, .3, 1);
+}
+html.js .invite-mock [data-inv].show { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .invite-glow { animation: none; }
+  html.js .invite-mock [data-inv] { opacity: 1; transform: none; transition: none; }
+}
+
+@media (max-width: 560px) {
+  .invite-clock { gap: 10px; }
+  .invite-names { font-size: 26px; }
+}
+
+html[lang="th"] .invite-names { line-height: 1.25; }
+.invite-mock .chat-caption { max-width: 336px; margin-left: auto; margin-right: auto; text-align: center; }
+
+/* ---------- service mockups (01 feasibility model, 02 ledger) ----------
+   Same chrome as the chat demo so all four service panels read as a family. */
+.mock {
+  background: var(--surface-2); border: 1px solid var(--line);
+  border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm);
+}
+.mock-head {
+  display: flex; align-items: center; gap: 12px;
+  padding: 13px 18px; background: var(--surface); border-bottom: 1px solid var(--line);
+}
+.mock-title { font-size: 13px; font-weight: 800; color: var(--ink); }
+.mock-tabs {
+  margin-left: auto; display: inline-flex; gap: 2px; padding: 3px;
+  background: #EDEDEA; border: 1px solid var(--line-2); border-radius: 999px;
+}
+.mock-tabs span {
+  padding: 4px 10px; border-radius: 999px; font-size: 11px; font-weight: 700;
+  color: var(--muted); transition: background .3s ease, color .3s ease;
+}
+.mock-tabs span.on { background: #fff; color: var(--green-dk); box-shadow: 0 1px 3px rgba(0,0,0,0.10); }
+.mock-live { margin-left: auto; display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 700; color: var(--muted); }
+.mock-live i {
+  width: 7px; height: 7px; border-radius: 50%; background: var(--green);
+  animation: chat-pulse 2.6s ease-out infinite;
+}
+.mock-body { padding: 20px 18px; }
+
+/* --- 01: the figures re-solve when the scenario changes --- */
+.figs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 22px; }
+.figs > div { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px; }
+.figs b {
+  font-size: 26px; font-weight: 800; color: var(--ink); line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.figs s { text-decoration: none; font-size: 13px; font-weight: 800; color: var(--green-dk); }
+.figs i { flex: 1 0 100%; font-style: normal; font-size: 11px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+
+.bars-label { font-size: 11px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+.bars { display: flex; align-items: flex-end; gap: 8px; height: 96px; }
+.bars span {
+  flex: 1; border-radius: 6px 6px 3px 3px;
+  height: calc(var(--h, .5) * 100%);
+  background: linear-gradient(180deg, var(--green) 0%, var(--green-dk) 100%);
+  transition: height .85s cubic-bezier(.2, .7, .3, 1);
+}
+.bars span:last-child { background: linear-gradient(180deg, var(--green-br) 0%, var(--green) 100%); }
+
+/* --- 02: rows match one at a time, the total climbs --- */
+.led-total { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
+.led-total i { font-style: normal; font-size: 11px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
+.led-total b { font-size: 25px; font-weight: 800; color: var(--ink); font-variant-numeric: tabular-nums; }
+.led-rows { list-style: none; margin: 0 0 14px; padding: 0; display: flex; flex-direction: column; }
+.led-rows li {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 0; border-top: 1px solid var(--line);
+  font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums;
+}
+.led-rows em { font-style: normal; margin-left: auto; color: var(--ink); font-weight: 700; }
+.led-rows b {
+  width: 20px; height: 20px; border-radius: 50%; flex: 0 0 auto;
+  display: grid; place-items: center; font-size: 11px;
+  background: var(--tint); color: var(--green-dk);
+}
+.led-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 12px; color: var(--muted); }
+.led-foot b { color: var(--ink); font-weight: 800; font-variant-numeric: tabular-nums; }
+.led-foot .clean { color: var(--green-dk); font-weight: 700; }
+
+/* hidden states only apply once JS is driving them */
+html.js .mock-ledger .led-rows li { opacity: 0; transform: translateY(6px); transition: opacity .4s ease, transform .4s ease; }
+html.js .mock-ledger .led-rows li.show { opacity: 1; transform: none; }
+html.js .mock-ledger .led-rows b { transform: scale(0); transition: transform .32s cubic-bezier(.34, 1.56, .64, 1); }
+html.js .mock-ledger .led-rows li.tick b { transform: scale(1); }
+
+@media (prefers-reduced-motion: reduce) {
+  .mock-live i { animation: none; box-shadow: 0 0 0 3px rgba(46,158,91,0.20); }
+  .bars span { transition: none; }
+  html.js .mock-ledger .led-rows li,
+  html.js .mock-ledger .led-rows li.show { opacity: 1; transform: none; transition: none; }
+  html.js .mock-ledger .led-rows b { transform: scale(1); transition: none; }
+}
+
+@media (max-width: 560px) {
+  .mock-body { padding: 16px 14px; }
+  /* Thai scenario labels wrap inside their pills at this width, so give the
+     tabs their own row rather than squeezing them beside the title */
+  .mock-head { flex-wrap: wrap; gap: 10px; }
+  .mock-tabs { margin-left: 0; width: 100%; justify-content: space-between; }
+  .mock-tabs span { white-space: nowrap; }
+  .figs { gap: 10px; }
+  .figs b { font-size: 21px; }
+  .bars { height: 76px; gap: 6px; }
+  .led-total b { font-size: 21px; }
+  .led-rows li { font-size: 12px; }
+}
+
+html[lang="th"] .mock-tabs span, html[lang="th"] .figs i,
+html[lang="th"] .bars-label, html[lang="th"] .led-total i { letter-spacing: 0.01em; }
+
+/* travelling signals along the hero lattice: the network is thinking */
+.lattice-flow line {
+  stroke: var(--green-br); stroke-width: 2.6; stroke-linecap: round;
+  fill: none; stroke-dasharray: 14 260; stroke-dashoffset: 274;
+  animation: lattice-signal 5.2s linear infinite;
+}
+@keyframes lattice-signal { to { stroke-dashoffset: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .lattice-flow { display: none; }
+}
+
+/* last word on the card grid, so it beats the 2-up rule above */
+@media (max-width: 560px) {
+  .grid-4 { grid-template-columns: 1fr; }
 }

@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Prompt is used only by the e-wedding mockup below, so it loads on this page alone -->
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
   <script>document.documentElement.className += " js";</script>
 </head>
@@ -48,7 +50,8 @@
           <div class="dropdown">
             <a href="services.html#consulting" data-i18n="services.s1.title">Business Consulting</a>
             <a href="services.html#software" data-i18n="services.s2.title">Custom Enterprise Software</a>
-            <a href="services.html#ewedding" data-i18n="services.s3.title">e-Wedding Cards &amp; Games</a>
+            <a href="services.html#assistant" data-i18n="services.s3.title">AI Customer Assistants</a>
+            <a href="services.html#ewedding" data-i18n="services.s4.title">e-Wedding Cards &amp; Games</a>
           </div>
         </div>
         <div class="nav-item has-dropdown">
@@ -78,7 +81,7 @@
   <section class="page-hero wrap" data-reveal>
     <div class="badge" style="margin-left:auto;margin-right:auto;"><span class="dot"></span><span data-i18n="home.svc.eyebrow">What we do</span></div>
     <h1 data-i18n="services.hero.title">Services built around how you actually work.</h1>
-    <p data-i18n="services.hero.text">Three focused service lines — from strategy to the software that runs it — delivered with the same friendly, practical approach.</p>
+    <p data-i18n="services.hero.text">Four service lines — from strategy, to the software that runs it, to the assistant that answers your customers — delivered with the same friendly, practical approach.</p>
   </section>
 
   <!-- SERVICE 1 -->
@@ -97,14 +100,68 @@
           <li data-i18n="services.s1.b6">Capital raises, investor offerings and partnership structuring</li>
         </ul>
       </div>
-      <div class="photo has-img" style="aspect-ratio:5/4;"><img src="assets/img/consulting.jpg" alt="Business consulting session"></div>
+      <div>
+        <!-- feasibility model; scenarios cycle in main.js -->
+        <div class="mock mock-case">
+          <div class="mock-head">
+            <span class="mock-title" data-i18n="mock.case.title">Feasibility model</span>
+            <span class="mock-tabs" aria-hidden="true">
+              <span data-sc="down" data-i18n="mock.case.down">Downside</span><span data-sc="base" class="on" data-i18n="mock.case.base">Base</span><span data-sc="up" data-i18n="mock.case.up">Upside</span>
+            </span>
+          </div>
+          <div class="mock-body">
+            <div class="figs">
+              <div><b data-fig="irr">27.5</b><s>%</s><i data-i18n="mock.case.irr">IRR</i></div>
+              <div><b data-fig="ebitda">53</b><s>฿M</s><i data-i18n="mock.case.ebitda">EBITDA</i></div>
+              <div><b data-fig="pay">4.3</b><s data-i18n="mock.case.yr">yr</s><i data-i18n="mock.case.pay">Payback</i></div>
+            </div>
+            <div class="bars-label" data-i18n="mock.case.lines">Revenue lines</div>
+            <div class="bars" aria-hidden="true">
+              <span style="--h:0.42"></span>
+              <span style="--h:0.58"></span>
+              <span style="--h:0.35"></span>
+              <span style="--h:0.72"></span>
+              <span style="--h:0.5"></span>
+              <span style="--h:0.64"></span>
+              <span style="--h:0.88"></span>
+            </div>
+          </div>
+        </div>
+        <p class="chat-caption" data-i18n="mock.case.caption">Seven revenue lines, three scenarios — the model behind a ฿120M raise.</p>
+      </div>
     </div>
   </section>
 
   <!-- SERVICE 2 -->
   <section id="software" class="wrap" style="padding:0 32px 44px;">
     <div class="panel" data-reveal>
-      <div class="photo has-img" style="aspect-ratio:5/4;order:2;"><img src="assets/img/dashboard.jpg" alt="Custom software dashboard"></div>
+      <div style="order:2;">
+        <!-- month-end reconciliation; rows and totals driven from main.js -->
+        <div class="mock mock-ledger">
+          <div class="mock-head">
+            <span class="mock-title" data-i18n="mock.led.title">Ledger · March</span>
+            <span class="mock-live"><i aria-hidden="true"></i><span data-i18n="mock.led.live">Live</span></span>
+          </div>
+          <div class="mock-body">
+            <div class="led-total">
+              <i data-i18n="mock.led.total">Reconciled this month</i>
+              <b data-led-total>฿0</b>
+            </div>
+            <ul class="led-rows">
+              <li data-led="0"><span>INV-2041</span><em>฿48,000</em><b aria-hidden="true">&#10003;</b></li>
+              <li data-led="1"><span>INV-2042</span><em>฿32,500</em><b aria-hidden="true">&#10003;</b></li>
+              <li data-led="2"><span>INV-2043</span><em>฿61,200</em><b aria-hidden="true">&#10003;</b></li>
+              <li data-led="3"><span>INV-2044</span><em>฿27,800</em><b aria-hidden="true">&#10003;</b></li>
+              <li data-led="4"><span>INV-2045</span><em>฿54,300</em><b aria-hidden="true">&#10003;</b></li>
+            </ul>
+            <div class="led-foot">
+              <span><b data-led-count>0</b> <span data-i18n="mock.led.matched">invoices matched</span></span>
+              <span class="clean" data-i18n="mock.led.clean">0 unexplained</span>
+            </div>
+          </div>
+        </div>
+        <p class="chat-caption" data-i18n="mock.led.caption">฿7.8M a month, reconciled to the entry, with a second human on every load.</p>
+      </div>
       <div style="order:1;">
         <div class="eyebrow" data-i18n="services.s2.eyebrow">02 — Software &amp; AI</div>
         <h2 class="h2" style="font-size:32px;margin-bottom:16px;" data-i18n="services.s2.title">Custom Enterprise Software</h2>
@@ -125,20 +182,95 @@
   </section>
 
   <!-- SERVICE 3 -->
+  <section id="assistant" class="wrap" style="padding:0 32px 44px;">
+    <div class="panel" data-reveal>
+      <div>
+        <div class="eyebrow" data-i18n="services.s3.eyebrow">03 — Conversational AI</div>
+        <h2 class="h2" style="font-size:32px;margin-bottom:16px;" data-i18n="services.s3.title">AI Customer Assistants</h2>
+        <p style="font-size:16px;color:#6A6A66;margin:0 0 22px;" data-i18n="services.s3.desc">An assistant that talks to your customers the way your best staff would — checks real stock, gives a real restock date, and hands the conversation to a person the moment it is out of its depth. It is awake at 3am.</p>
+        <ul class="ticks">
+          <li data-i18n="services.s3.b1">Answers on LINE, Facebook, Instagram, your app and the shop floor</li>
+          <li data-i18n="services.s3.b2">Checks live stock and gives a real restock date</li>
+          <li data-i18n="services.s3.b3">Answers, or says it cannot — it never invents one</li>
+          <li data-i18n="services.s3.b4">Hands off to your team with the whole conversation attached</li>
+          <li data-i18n="services.s3.b5">Takes the repetitive questions off your staff, around the clock</li>
+        </ul>
+      </div>
+      <div>
+        <!-- looping illustration of the assistant at work; sequenced in main.js -->
+        <div class="chat-demo">
+          <div class="chat-head">
+            <span class="chat-avatar" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
+            <div>
+              <div class="chat-name" data-i18n="chat.header">INTAS Assistant</div>
+              <div class="chat-status"><span class="chat-dot" aria-hidden="true"></span><span data-i18n="chat.status">Online</span></div>
+            </div>
+            <span class="chat-time" data-i18n="chat.time">21:40 · Sunday</span>
+          </div>
+          <div class="chat-body">
+          <div class="bubble me" data-step="1" data-i18n="chat.m1">Is the grey one still in stock?</div>
+          <div class="slot">
+            <div class="typing" data-step="2" aria-hidden="true"><i></i><i></i><i></i></div>
+            <div class="bubble bot" data-step="3" data-i18n="chat.m2">Grey Shiba plush — 2 left at Siam, none at Ladprao.</div>
+          </div>
+          <div class="bubble me" data-step="4" data-i18n="chat.m3">When does Ladprao get more?</div>
+          <div class="slot">
+            <div class="typing" data-step="5" aria-hidden="true"><i></i><i></i><i></i></div>
+            <div class="bubble bot" data-step="6" data-i18n="chat.m4">Restock arrives Thursday. Want me to hold one?</div>
+          </div>
+          </div>
+        </div>
+        <p class="chat-caption" data-i18n="chat.caption">A real question, answered at 21:40 on a Sunday.</p>
+      </div>
+    </div>
+  </section>
+
   <section id="ewedding" class="wrap" style="padding:0 32px 44px;">
     <div class="panel" data-reveal>
       <div>
-        <div class="eyebrow" data-i18n="services.s3.eyebrow">03 — Digital</div>
-        <h2 class="h2" style="font-size:32px;margin-bottom:16px;" data-i18n="services.s3.title">e-Wedding Cards &amp; Games</h2>
-        <p style="font-size:16px;color:#6A6A66;margin:0 0 22px;" data-i18n="services.s3.desc">Bring your celebration online with a beautiful digital invitation and interactive games your guests will love — mobile-friendly and easy to share.</p>
+        <div class="eyebrow" data-i18n="services.s4.eyebrow">04 — Digital</div>
+        <h2 class="h2" style="font-size:32px;margin-bottom:16px;" data-i18n="services.s4.title">e-Wedding Cards &amp; Games</h2>
+        <p style="font-size:16px;color:#6A6A66;margin:0 0 22px;" data-i18n="services.s4.desc">Bring your celebration online with a beautiful digital invitation and interactive games your guests will love — mobile-friendly and easy to share.</p>
         <ul class="ticks">
-          <li data-i18n="services.s3.b1">Custom-designed digital invitations</li>
-          <li data-i18n="services.s3.b2">RSVP &amp; guest management</li>
-          <li data-i18n="services.s3.b3">Interactive games &amp; photo walls</li>
-          <li data-i18n="services.s3.b4">Ready to share in minutes</li>
+          <li data-i18n="services.s4.b1">Custom-designed digital invitations</li>
+          <li data-i18n="services.s4.b2">RSVP &amp; guest management</li>
+          <li data-i18n="services.s4.b3">Interactive games &amp; photo walls</li>
+          <li data-i18n="services.s4.b4">Ready to share in minutes</li>
         </ul>
       </div>
-      <div class="photo has-img" style="aspect-ratio:5/4;"><img src="assets/img/ewedding.jpg" alt="e-Wedding digital invitation"></div>
+      <div>
+        <!-- animated mockup of a live e-wedding invitation; ticker in main.js -->
+        <div class="invite-mock">
+          <div class="invite-screen">
+            <div class="invite-glow" aria-hidden="true"></div>
+            <div class="invite-lang" data-inv="1" aria-hidden="true"><span data-inv-lang="TH">ไทย</span><span data-inv-lang="EN">EN</span></div>
+            <div class="invite-body">
+              <p class="invite-eyebrow" data-inv="2" data-i18n="inv.eyebrow">We’re getting married</p>
+              <div class="invite-names" data-inv="3">Lily &amp; Benz</div>
+              <div class="invite-card invite-count" data-inv="4">
+                <div class="invite-mini" data-i18n="inv.countdown">Counting down</div>
+                <div class="invite-clock">
+                  <span><b data-cd="d">12</b><i data-i18n="inv.d">days</i></span>
+                  <span><b data-cd="h">06</b><i data-i18n="inv.h">hrs</i></span>
+                  <span><b data-cd="m">24</b><i data-i18n="inv.m">min</i></span>
+                  <span><b data-cd="s">00</b><i data-i18n="inv.s">sec</i></span>
+                </div>
+              </div>
+              <div class="invite-card" data-inv="5">
+                <div class="invite-mini"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 11h18"/></svg><span data-i18n="inv.savecal">Save to calendar</span></div>
+                <div class="invite-row"><span data-i18n="inv.e1">Morning ceremony</span><b>09:09</b></div>
+                <div class="invite-row"><span data-i18n="inv.e2">Evening reception</span><b>18:00</b></div>
+                <p class="invite-note" data-i18n="inv.remind">We’ll remind you an hour before each.</p>
+              </div>
+              <div class="invite-card invite-cta" data-inv="6">
+                <p data-i18n="inv.thanks">Thank you for celebrating with us</p>
+                <span class="invite-btn"><span data-i18n="inv.enter">Enter the celebration</span> <b aria-hidden="true">&#8594;</b></span>
+              </div>
+            </div>
+          </div>
+          <p class="chat-caption" data-i18n="inv.caption">A live invitation — countdown, calendar and RSVP, in each guest’s own language.</p>
+        </div>
+      </div>
     </div>
   </section>
 
