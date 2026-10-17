@@ -22,8 +22,8 @@ INTAS Website.html        Original design-tool bundle (reference)
 
 ```bash
 cd site
-python -m http.server 8080
-# open http://localhost:8080
+python3 serve.py
+# open http://localhost:8888
 ```
 
 ## Languages

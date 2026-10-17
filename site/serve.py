@@ -26,6 +26,13 @@ class NoCacheHandler(http.server.SimpleHTTPRequestHandler):
         self.send_header("Expires", "0")
         super().end_headers()
 
+    def translate_path(self, path):
+        # mirror Vercel's cleanUrls: /about serves about.html
+        fs_path = super().translate_path(path)
+        if not os.path.exists(fs_path) and os.path.exists(fs_path + ".html"):
+            return fs_path + ".html"
+        return fs_path
+
     def send_header(self, keyword, value):
         # never answer a conditional request with 304
         if keyword == "Last-Modified":
